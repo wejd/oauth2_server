@@ -26,7 +26,7 @@ var lunchDatabaseCreationForce = function() {
     });
 }
 
-//lunchDatabaseCreationForce()
+lunchDatabaseCreationForce()
 /**
  *  part1 - ends
  */
