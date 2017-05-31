@@ -100,4 +100,4 @@ router.post('/oauth2/token', authController.isClientAuthenticated, oauth2Control
 app.use('/api', router);
 
 // Start the server
-app.listen(3000);
+app.listen(process.env.PORT || 3000)
