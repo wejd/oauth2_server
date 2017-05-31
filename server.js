@@ -94,7 +94,10 @@ router.post('/oauth2/authorize', authController.isAuthenticated, oauth2Controlle
 router.post('/oauth2/token', authController.isClientAuthenticated, oauth2Controller.token)
 
 
+router.get('/privacy', function(req, res, next) {
 
+    res.render('policy')
+})
 
 // Register all our routes with /api
 app.use('/api', router);
