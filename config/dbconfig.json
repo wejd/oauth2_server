@@ -1,0 +1,13 @@
+{
+
+    "App": {
+
+
+
+        "conString": "postgres://postgres@localhost:5432/skideev",
+        "secret": "51c8zaaz-cazavz(-3df5b51d8rhz-a"
+
+
+
+    }
+}
