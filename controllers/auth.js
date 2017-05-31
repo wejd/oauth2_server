@@ -6,6 +6,7 @@ var User = require('../models/user');
 var Client = require('../models/client');
 var Token = require('../models/token');
 var pg = require('pg');
+pg.defaults.ssl = true;
 var config = require('./../config/dbconfig.json');
 var conString = config.App.conString;
 var models = require('./../models');
