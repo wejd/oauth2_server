@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
             unique: true
         },
         type: DataTypes.STRING,
-        quantity: DataTypes.STRING,
+        num_serie: DataTypes.STRING,
         userId: DataTypes.STRING
 
 

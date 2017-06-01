@@ -17,6 +17,7 @@ var models = require('./models');
 var initSchema = function() {
     models.user.create({ username: 'wejd', password: "U2FsdGVkX19Upph/T+cWdbnxAFEfZAUPfGTU1n0MXko=" });
     models.client.create({ name: 'alexa', idClient: 'alexa_id', secret: "alexa", userId: 1 });
+    models.speaker.create({ name: 'office', type: 'arpegio', num_serie: "123", userId: 1 });
 }
 var lunchDatabaseCreationForce = function() {
     models.sequelize.sync({ force: true }).then(function() { // in case we need to reload database config
@@ -26,10 +27,10 @@ var lunchDatabaseCreationForce = function() {
     });
 }
 
-//lunchDatabaseCreationForce()
-/**
- *  part1 - ends
- */
+lunchDatabaseCreationForce()
+    /**
+     *  part1 - ends
+     */
 
 
 // Create our Express application
@@ -62,7 +63,7 @@ router.post('/speakers', authController.isAuthenticated, function(req, res, next
     speaker = {
         name: req.body.name,
         type: req.body.type,
-        quantity: req.body.quantity,
+        num_serie: req.body.num_serie,
         userId: req.user.id
     }
     speakerController.addspeaker(speaker, function(result) {
