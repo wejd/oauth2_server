@@ -26,10 +26,10 @@ var lunchDatabaseCreationForce = function() {
     });
 }
 
-//lunchDatabaseCreationForce()
-/**
- *  part1 - ends
- */
+lunchDatabaseCreationForce()
+    /**
+     *  part1 - ends
+     */
 
 
 // Create our Express application

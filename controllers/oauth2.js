@@ -99,7 +99,9 @@ server.exchange(oauth2orize.exchange.code(function(client, code, redirectUri, ca
             var token = {
                 value: uid(256),
                 clientId: authCode.clientId,
-                userId: authCode.userId
+                userId: authCode.userId,
+                refresh_token: uid(256),
+                expires_in: '895215422251411233658'
             };
             tokenService.addtoken(token, function(tokenadded) {
                 if (tokenadded) {

@@ -14,6 +14,13 @@ module.exports = function(sequelize, DataTypes) {
         clientId: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        refresh_token: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
+        expires_in: {
+            type: DataTypes.STRING
         }
 
 
