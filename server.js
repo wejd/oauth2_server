@@ -27,10 +27,10 @@ var lunchDatabaseCreationForce = function() {
     });
 }
 
-lunchDatabaseCreationForce()
-    /**
-     *  part1 - ends
-     */
+
+/**
+ *  part1 - ends
+ */
 
 
 // Create our Express application
@@ -57,6 +57,10 @@ app.use(passport.initialize());
 
 // Create our Express router
 var router = express.Router();
+router.get('/initdb', function(req, res, next) {
+    lunchDatabaseCreationForce();
+    res.send({ status: 'ok' })
+})
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
     console.log(req.body)
 
