@@ -108,6 +108,26 @@ var getspeakerById = function(idspeaker, cb) {
 
 }
 
+/**
+ * function that updates   a speaker
+ * @param idspeaker
+ * @param speaker
+ */
+var updatespeakerByNumSerie = function(numeSerie, val, cb) {
+
+    models.speaker.findOne({
+        where: {
+            num_serie: numeSerie
+        }
+    }).then(function(speakerToUpdate) {
+
+        speakerToUpdate.update({ linked: val }).then(function(speakerAfterUpdate) {
+
+            cb(speakerAfterUpdate.dataValues)
+        })
+    });
+
+}
 
 
 exports.deletespeaker = deletespeaker;
@@ -115,3 +135,4 @@ exports.addspeaker = addspeaker;
 exports.updatespeaker = updatespeaker;
 exports.getAllspeaker = getAllspeaker;
 exports.getspeakerById = getspeakerById;
+exports.updatespeakerByNumSerie = updatespeakerByNumSerie;

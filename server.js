@@ -61,6 +61,19 @@ router.get('/initdb', function(req, res, next) {
     lunchDatabaseCreationForce();
     res.send({ status: 'ok' })
 })
+
+router.post('/updateSpeakerByNumSerie', function(req, res, next) {
+
+    speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {
+        if (speakerupdated) {
+            res.send(true);
+        } else {
+            res.send(false)
+        }
+
+    })
+
+})
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
     console.log(req.body)
 
