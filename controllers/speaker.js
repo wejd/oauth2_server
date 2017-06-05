@@ -112,7 +112,7 @@ var findSpeakerByOwner = function(userId, callback) {
                 console.log('erruer', err)
             }
 
-            return cb(rows.rows);
+            return callback(rows.rows);
 
         });
 
