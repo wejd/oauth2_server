@@ -62,6 +62,44 @@ router.get('/initdb', function(req, res, next) {
     res.send({ status: 'ok' })
 })
 
+router.post('/addNewUser', function(req, res, next) {
+
+    var user = {
+        username: req.body.username,
+        password: req.body.password
+    }
+    userController.adduser(user, function(userAdded) {
+
+        /* models.client.create({ name: 'alexa', idClient: 'alexa_id', secret: "alexa", userId: userAdded.id });*/
+        console.log('uer Added')
+        res.send({ status: 'ok' })
+    })
+
+
+})
+router.post('/login', function(req, res, next) {
+    models.user.findOne({ where: { username: req.body.username } }).then(function(user) {
+
+        if (!user) { return res.send(false) }
+
+        // No user found with that username
+        if (!user) { res.send(false) }
+        user = user.dataValues
+            // Make sure the password is correct
+        userController.verifyPassword(user, req.body.password, function(isMatch) {
+
+
+            // Password did not match
+            if (!isMatch) { return res.send(false) }
+
+            // Success
+            return res.send(user);
+        });
+    });
+
+
+})
+
 router.post('/updateSpeakerByNumSerie', function(req, res, next) {
 
     speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {
