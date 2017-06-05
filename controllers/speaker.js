@@ -97,11 +97,27 @@ var getAllspeaker = function(cb) {
 
 var findSpeakerByOwner = function(userId, callback) {
 
-    models.speaker.find({ where: { userId: userId } }).then(function(listSpeakerFound) {
 
-        return callback(listSpeakerFound.dataValues)
 
-    })
+    console.log('Outside pg connect')
+    pg.connect(conString, function(err, dbclient, ok) {
+
+        if (err) {
+
+            return console.error('could not connect to the database ' + err);
+        }
+
+        dbclient.query('SELECT * FROM speakers where "userId" = $1', [userId], function(err, rows) {
+            if (err) {
+                console.log('erruer', err)
+            }
+
+            return cb(rows.rows);
+
+        });
+
+        ok();
+    });
 }
 
 
