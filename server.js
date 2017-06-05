@@ -113,21 +113,22 @@ router.post('/updateSpeakerByNumSerie', function(req, res, next) {
 
 })
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
-    console.log(req.body)
+        console.log(req.body)
 
-    speaker = {
-        name: req.body.name,
-        type: req.body.type,
-        num_serie: req.body.num_serie,
-        userId: req.user.id
-    }
-    speakerController.addspeaker(speaker, function(result) {
-        console.log(result)
-        res.send(result)
+        speaker = {
+            name: req.body.name,
+            type: req.body.type,
+            num_serie: req.body.num_serie,
+            userId: req.user.id
+        }
+        speakerController.addspeaker(speaker, function(result) {
+            console.log(result)
+            res.send(result)
+        })
+
     })
-
-})
-router.get('/speakers', authController.isAuthenticated, function(req, res, next) {
+    //router.get('/speakers', authController.isAuthenticated, function(req, res, next) {
+router.get('/speakers', authController.isBearerAuthenticated, function(req, res, next) {
     console.log(req.user)
     speakerController.findSpeakerByOwner(req.user.id, function(result) {
         console.log(result)
