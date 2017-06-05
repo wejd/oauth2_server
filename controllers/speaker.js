@@ -95,6 +95,16 @@ var getAllspeaker = function(cb) {
 }
 
 
+var findSpeakerByOwner = function(userId, callback) {
+
+    models.speaker.find({ where: { userId: userId } }).then(function(listSpeakerFound) {
+
+        return callback(listSpeakerFound.dataValues)
+
+    })
+}
+
+
 /**
  * function that return a speaker by their id
  * @param idManager
@@ -136,3 +146,4 @@ exports.updatespeaker = updatespeaker;
 exports.getAllspeaker = getAllspeaker;
 exports.getspeakerById = getspeakerById;
 exports.updatespeakerByNumSerie = updatespeakerByNumSerie;
+exports.findSpeakerByOwner = findSpeakerByOwner;

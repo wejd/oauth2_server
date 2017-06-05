@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         type: DataTypes.STRING,
         num_serie: DataTypes.STRING,
-        userId: DataTypes.STRING,
+        userId: DataTypes.INTEGER,
         linked: {
             type: DataTypes.BOOLEAN,
             defaultValue: false

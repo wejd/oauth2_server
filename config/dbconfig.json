@@ -4,8 +4,8 @@
 
 
 
-        "conString1": "postgres://postgres@localhost:5432/skideev",
-        "conString": "postgres://qjbkglyhvjqmyi:8468c3ec7e206acbc52dbd71925fca6f89372f6facea7dd67290f2f24e16ce88@ec2-50-19-219-69.compute-1.amazonaws.com:5432/deigpj5qrf0u50",
+        "conString": "postgres://postgres@localhost:5432/skideev",
+        "conString1": "postgres://qjbkglyhvjqmyi:8468c3ec7e206acbc52dbd71925fca6f89372f6facea7dd67290f2f24e16ce88@ec2-50-19-219-69.compute-1.amazonaws.com:5432/deigpj5qrf0u50",
         "secret": "51c8zaaz-cazavz(-3df5b51d8rhz-a"
 
 

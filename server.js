@@ -128,8 +128,8 @@ router.post('/speakers', authController.isAuthenticated, function(req, res, next
 
 })
 router.get('/speakers', authController.isAuthenticated, function(req, res, next) {
-
-    speakerController.getAllspeaker(function(result) {
+    console.log(req.user)
+    speakerController.findSpeakerByOwner(req.user.id, function(result) {
         console.log(result)
         res.send(result)
     })
