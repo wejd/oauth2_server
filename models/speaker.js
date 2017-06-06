@@ -4,7 +4,7 @@ module.exports = function(sequelize, DataTypes) {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true
+
         },
         type: DataTypes.STRING,
         num_serie: DataTypes.STRING,
