@@ -156,6 +156,18 @@ var updatespeakerByNumSerie = function(numeSerie, val, cb) {
 }
 
 
+/**
+ * this function delete a speaker and take in parameter his id
+ * @param data
+ */
+var deletespeakerByNumSerie = function(numSerie, cb) {
+
+    models.speaker.findOne({ where: { num_serie: numSerie } }).then(function(speaker) {
+
+        cb(speaker.destroy());
+    });
+};
+
 exports.deletespeaker = deletespeaker;
 exports.addspeaker = addspeaker;
 exports.updatespeaker = updatespeaker;
@@ -163,3 +175,4 @@ exports.getAllspeaker = getAllspeaker;
 exports.getspeakerById = getspeakerById;
 exports.updatespeakerByNumSerie = updatespeakerByNumSerie;
 exports.findSpeakerByOwner = findSpeakerByOwner;
+exports.deletespeakerByNumSerie = deletespeakerByNumSerie;

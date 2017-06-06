@@ -112,6 +112,19 @@ router.post('/updateSpeakerByNumSerie', function(req, res, next) {
     })
 
 })
+
+router.post('/deleteSpeakerByNumSerie', function(req, res, next) {
+
+    speakerController.deletespeakerByNumSerie(req.body.num_serie, function(speakerdeleted) {
+        if (speakerdeleted) {
+            res.send(true);
+        } else {
+            res.send(false)
+        }
+
+    })
+
+})
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
     console.log(req.body)
 
