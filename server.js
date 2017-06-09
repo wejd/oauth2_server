@@ -187,7 +187,55 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
 })
 
+router.get('/playtrack', authController.isAuthenticated, function(req, res, next) {
 
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('list speaker ', listSpeaker)
+        listSpeaker.forEach(function(speaker) {
+
+            if (speaker.linked == true) {
+                console.log('speaker nbame', namespeakerfromalexa)
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5050/playtrack', json: true, form: { key: speaker.num_serie } }).spread(
+
+                    function(error, body) {
+
+
+
+                        if (body == 'no') {
+
+
+                            res.send({ result: 'not found' })
+
+
+                        } else {
+
+
+
+                            res.send({ result: 'found' })
+
+
+                        }
+
+
+                    });
+
+
+
+
+
+            }
+
+
+
+        })
+
+
+    })
+
+
+
+})
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
     console.log(req.body)
 
