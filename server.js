@@ -125,6 +125,57 @@ router.post('/deleteSpeakerByNumSerie', function(req, res, next) {
     })
 
 })
+var http = require('bluebird').promisifyAll(require('request'), { multiArgs: true });
+router.get('/linkspeaker', authController.isAuthenticated, function(req, res, next) {
+    var namespeakerfromalexa = req.body.key
+    console.log(req.user)
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('list speaker ', listSpeaker)
+        listSpeaker.forEach(function(speaker) {
+
+            if (speaker.name == namespeakerfromalexa) {
+                console.log('speaker nbame', namespeakerfromalexa)
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5050/', json: true, form: { key: speaker.num_serie } }).spread(
+
+                    function(error, body) {
+
+
+
+                        if (body == 'found') {
+                            i++;
+                            console.log('found')
+                            res.send({ result: 'found' })
+
+
+                        } else {
+
+                            console.log('unabble to linik');
+                            str = 'not found'
+                            res.send({ result: 'not found' })
+
+
+                        }
+
+
+                    });
+
+
+
+
+
+            }
+
+
+
+        })
+
+
+    })
+
+})
+
+
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
     console.log(req.body)
 
