@@ -146,11 +146,15 @@ var updatespeakerByNumSerie = function(numeSerie, val, cb) {
             num_serie: numeSerie
         }
     }).then(function(speakerToUpdate) {
+        if (speakerToUpdate) {
+            speakerToUpdate.update({ linked: val }).then(function(speakerAfterUpdate) {
 
-        speakerToUpdate.update({ linked: val }).then(function(speakerAfterUpdate) {
+                cb(speakerAfterUpdate.dataValues)
+            })
+        } else {
+            cb(null)
+        }
 
-            cb(speakerAfterUpdate.dataValues)
-        })
     });
 
 }
