@@ -201,7 +201,6 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
                     function(error, body) {
 
 
-
                         if (body == 'no') {
 
 
