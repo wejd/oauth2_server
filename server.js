@@ -164,6 +164,18 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
 
 
+            } else {
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5050/unlinkspeaker', json: true, form: { key: speaker.num_serie } }).spread(
+
+                    function(error, body) {
+
+
+
+
+
+                    });
+
             }
 
 
