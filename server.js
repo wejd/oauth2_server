@@ -284,6 +284,54 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
 
 
 })
+router.get('/pause', authController.isAuthenticated, function(req, res, next) {
+
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('list speaker ', listSpeaker)
+        listSpeaker.forEach(function(speaker) {
+
+            if (speaker.linked == true) {
+
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5050/pause', json: true, form: { key: speaker.num_serie } }).spread(
+
+                    function(error, body) {
+
+
+                        if (body == 'no') {
+
+
+                            res.send({ result: 'not found' })
+
+
+                        } else {
+
+
+
+                            res.send({ result: 'found' })
+
+
+                        }
+
+
+                    });
+
+
+
+
+
+            }
+
+
+
+        })
+
+
+    })
+
+
+
+})
 
 router.get('/playprevious', authController.isAuthenticated, function(req, res, next) {
 
