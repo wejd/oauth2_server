@@ -206,14 +206,14 @@ router.get('/linkToanyone', authController.isAuthenticated, function(req, res, n
                 if (body == 'found') {
 
                     console.log('found')
-                    res.send({ result: 'found' })
+                    res.send({ result: 'found', name: listSpeaker[0].name })
 
 
                 } else {
 
                     console.log('unabble to linik');
 
-                    res.send({ result: 'not found' })
+                    res.send({ result: 'not found', name: listSpeaker[0].name })
 
 
                 }
