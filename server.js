@@ -333,6 +333,102 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
 
 
 })
+router.get('/incrvolume', authController.isAuthenticated, function(req, res, next) {
+
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('list speaker ', listSpeaker)
+        listSpeaker.forEach(function(speaker) {
+
+            if (speaker.linked == true) {
+
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5050/incrvolume', json: true, form: { key: speaker.num_serie } }).spread(
+
+                    function(error, body) {
+
+
+                        if (body == 'no') {
+
+
+                            res.send({ result: 'not found' })
+
+
+                        } else {
+
+
+
+                            res.send({ result: 'found' })
+
+
+                        }
+
+
+                    });
+
+
+
+
+
+            }
+
+
+
+        })
+
+
+    })
+
+
+
+})
+router.get('/decrevolume', authController.isAuthenticated, function(req, res, next) {
+
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('list speaker ', listSpeaker)
+        listSpeaker.forEach(function(speaker) {
+
+            if (speaker.linked == true) {
+
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5050/decrevolume', json: true, form: { key: speaker.num_serie } }).spread(
+
+                    function(error, body) {
+
+
+                        if (body == 'no') {
+
+
+                            res.send({ result: 'not found' })
+
+
+                        } else {
+
+
+
+                            res.send({ result: 'found' })
+
+
+                        }
+
+
+                    });
+
+
+
+
+
+            }
+
+
+
+        })
+
+
+    })
+
+
+
+})
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
     console.log(req.body)
 
