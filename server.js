@@ -143,7 +143,7 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
 
                         if (body == 'found') {
-                            i++;
+
                             console.log('found')
                             res.send({ result: 'found' })
 
@@ -151,7 +151,7 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
                         } else {
 
                             console.log('unabble to linik');
-                            str = 'not found'
+
                             res.send({ result: 'not found' })
 
 
