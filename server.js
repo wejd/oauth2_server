@@ -187,6 +187,53 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
 })
 
+router.get('/linkToanyone', authController.isAuthenticated, function(req, res, next) {
+
+
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('list speaker ', listSpeaker)
+
+
+
+
+
+        http.postAsync({ url: 'http://vps341573.ovh.net:5050/', json: true, form: { key: listSpeaker[0].num_serie } }).spread(
+
+            function(error, body) {
+
+
+
+                if (body == 'found') {
+
+                    console.log('found')
+                    res.send({ result: 'found' })
+
+
+                } else {
+
+                    console.log('unabble to linik');
+
+                    res.send({ result: 'not found' })
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+            })
+
+    })
+})
+
+
 router.get('/playtrack', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
