@@ -477,6 +477,54 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
 
 
 })
+router.get('/decreasevolume', authController.isAuthenticated, function(req, res, next) {
+
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('list speaker ', listSpeaker)
+        listSpeaker.forEach(function(speaker) {
+
+            if (speaker.linked == true) {
+
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5050/decreasevolume', json: true, form: { key: speaker.num_serie, nb: req.body.key } }).spread(
+
+                    function(error, body) {
+
+
+                        if (body == 'no') {
+
+
+                            res.send({ result: 'not found' })
+
+
+                        } else {
+
+
+
+                            res.send({ result: 'found' })
+
+
+                        }
+
+
+                    });
+
+
+
+
+
+            }
+
+
+
+        })
+
+
+    })
+
+
+
+})
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
     console.log(req.body)
 
