@@ -71,7 +71,7 @@ router.post('/addNewUser', function(req, res, next) {
     userController.adduser(user, function(userAdded) {
 
         /* models.client.create({ name: 'alexa', idClient: 'alexa_id', secret: "alexa", userId: userAdded.id });*/
-        console.log('uer Added')
+
         res.send({ status: 'ok' })
     })
 
@@ -128,13 +128,12 @@ router.post('/deleteSpeakerByNumSerie', function(req, res, next) {
 var http = require('bluebird').promisifyAll(require('request'), { multiArgs: true });
 router.get('/linkspeaker', authController.isAuthenticated, function(req, res, next) {
     var namespeakerfromalexa = req.body.key
-    console.log(req.user)
+
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.name == namespeakerfromalexa) {
-                console.log('speaker nbame', namespeakerfromalexa)
+
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5050/', json: true, form: { key: speaker.num_serie } }).spread(
 
@@ -144,13 +143,13 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
                         if (body == 'found') {
 
-                            console.log('found')
+
                             res.send({ result: 'found' })
 
 
                         } else {
 
-                            console.log('unabble to linik');
+
 
                             res.send({ result: 'not found' })
 
@@ -191,7 +190,6 @@ router.get('/linkToanyone', authController.isAuthenticated, function(req, res, n
 
 
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
 
 
 
@@ -205,13 +203,13 @@ router.get('/linkToanyone', authController.isAuthenticated, function(req, res, n
 
                 if (body == 'found') {
 
-                    console.log('found')
+
                     res.send({ result: 'found', name: listSpeaker[0].name })
 
 
                 } else {
 
-                    console.log('unabble to linik');
+
 
                     res.send({ result: 'not found', name: listSpeaker[0].name })
 
@@ -238,7 +236,6 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -253,8 +250,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
                         }
                     });
             }
-            console.log('i', i)
-            console.log('lispealsad.length', listSpeaker.length - 1)
+
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
@@ -269,7 +265,6 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -323,7 +318,6 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -378,7 +372,6 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -432,7 +425,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
+
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -487,7 +480,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
     j = 0
 
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
+
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -542,7 +535,6 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -596,7 +588,6 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
-        console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
@@ -651,7 +642,7 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
 
 
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
-    console.log(req.body)
+
 
     speaker = {
         name: req.body.name,
@@ -660,16 +651,16 @@ router.post('/speakers', authController.isAuthenticated, function(req, res, next
         userId: req.user.id
     }
     speakerController.addspeaker(speaker, function(result) {
-        console.log(result)
+
         res.send(result)
     })
 
 })
 router.get('/speakers', authController.isAuthenticated, function(req, res, next) {
 
-    console.log(req.user)
+
     speakerController.findSpeakerByOwner(req.user.id, function(result) {
-        console.log(result)
+
         res.send(result)
     })
 
@@ -677,7 +668,7 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
 router.get('/speakersb', authController.isBearerAuthenticated, function(req, res, next) {
 
     speakerController.getAllspeaker(function(result) {
-        console.log(result)
+
         res.send(result)
     })
 
