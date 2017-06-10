@@ -271,7 +271,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
-            i++;
+
             if (speaker.linked == true) {
                 j++;
 
@@ -309,7 +309,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
                 }
             }
 
-
+            i++;
 
         })
 
@@ -325,7 +325,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
-            i++;
+
             if (speaker.linked == true) {
 
                 j++;
@@ -363,7 +363,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
                 }
             }
 
-
+            i++;
 
         })
 
@@ -380,7 +380,7 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
-            i++;
+
             if (speaker.linked == true) {
                 j++;
 
@@ -417,7 +417,7 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
                     res.send({ result: 'not found' })
                 }
             }
-
+            i++;
 
 
         })
@@ -472,7 +472,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
                 }
             }
 
-
+            i++;
 
         })
 
@@ -489,7 +489,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
-            i++;
+
             if (speaker.linked == true) {
                 j++;
 
@@ -527,6 +527,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
                 }
             }
 
+            i++;
 
 
         })
@@ -543,7 +544,7 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
-            i++;
+
             if (speaker.linked == true) {
                 j++;
 
@@ -581,7 +582,7 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
                 }
             }
 
-
+            i++;
 
         })
 
@@ -597,7 +598,7 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
-            i++;
+
             if (speaker.linked == true) {
                 j++;
 
@@ -634,7 +635,7 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
                     res.send({ result: 'not found' })
                 }
             }
-
+            i++;
 
 
         })
