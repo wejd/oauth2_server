@@ -253,6 +253,8 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
                         }
                     });
             }
+            console.log('i', i)
+            console.log('lispealsad.length', listSpeaker.length - 1)
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
