@@ -436,7 +436,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.linked == true) {
-
+                j++;
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5050/incrvolume', json: true, form: { key: speaker.num_serie } }).spread(
 
