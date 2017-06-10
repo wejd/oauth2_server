@@ -240,7 +240,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         console.log('list speaker ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
-            i++;
+
             if (speaker.linked == true) {
                 j++;
                 http.postAsync({ url: 'http://vps341573.ovh.net:5050/playtrack', json: true, form: { key: speaker.num_serie } }).spread(
@@ -260,6 +260,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
                     res.send({ result: 'not found' })
                 }
             }
+            i++;
         })
     })
 })
