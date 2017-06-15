@@ -55,13 +55,30 @@ app.use(session({
 // Use the passport package in our application
 app.use(passport.initialize());
 
+
 // Create our Express router
 var router = express.Router();
 router.get('/initdb', function(req, res, next) {
     lunchDatabaseCreationForce();
     res.send({ status: 'ok' })
 })
+router.get('/login', function(req, res, next) {
 
+    res.render('login')
+})
+router.get('/error', function(req, res, next) {
+
+    res.render('error')
+})
+router.get('/managespeaker', function(req, res, next) {
+    req.user = req.session.passport.user
+    if (!req.user) {
+        return res.redirect('/api/error')
+    } else {
+        res.render('speaker')
+    }
+
+})
 router.post('/addNewUser', function(req, res, next) {
 
     var user = {
@@ -75,6 +92,50 @@ router.post('/addNewUser', function(req, res, next) {
         res.send({ status: 'ok' })
     })
 
+
+})
+
+
+router.post('/userlogin', function(req, res, next) {
+    console.log('grzerg')
+    authController.isLocalStategie(req, res, function(user) {
+
+        if (user) {
+            req.logIn(user, function(err) {
+                if (err) res.redirect('error')
+                res.redirect('managespeaker')
+
+            })
+
+        }
+
+    })
+
+})
+router.get('/getspeakers', function(req, res, next) {
+
+    req.user = req.session.passport.user
+    if (!req.user) return res.redirect('/api/error')
+    speakerController.findSpeakerByOwner(req.user.id, function(result) {
+
+        res.send(result)
+    })
+
+})
+router.post('/addspeakers', function(req, res, next) {
+
+    req.user = req.session.passport.user
+    if (!req.user) return res.redirect('/api/error')
+    speaker = {
+        name: req.body.name,
+        type: req.body.type,
+        num_serie: req.body.num_serie,
+        userId: req.user.id
+    }
+    speakerController.addspeaker(speaker, function(result) {
+        console.log(result)
+        res.render('speaker')
+    })
 
 })
 router.post('/login', function(req, res, next) {
@@ -114,7 +175,7 @@ router.post('/updateSpeakerByNumSerie', function(req, res, next) {
 })
 
 router.post('/deleteSpeakerByNumSerie', function(req, res, next) {
-
+    console.log(req)
     speakerController.deletespeakerByNumSerie(req.body.num_serie, function(speakerdeleted) {
         if (speakerdeleted) {
             res.send(true);
