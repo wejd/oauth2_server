@@ -92,7 +92,7 @@ span.psw {
           document.getElementById('hidebtn').hidden=false
           document.getElementById('showbtn').hidden=true
             var xmlHttp = new XMLHttpRequest();
-                xmlHttp.open( "GET", "https://oauthalexa.herokuapp.com/api/getspeakers", false ); // false for synchronous request
+                xmlHttp.open( "GET", "https://oauth20.herokuapp.com/api/getspeakers", false ); // false for synchronous request
                 xmlHttp.send( null );
                 listSpeaker= JSON.parse(xmlHttp.responseText)
                 var divlist=document.getElementById('list')
@@ -115,7 +115,7 @@ span.psw {
                        data.append('num_serie',this.id)
                        console.log('delete',this.id)
                        var xmlHttp = new XMLHttpRequest();
-                         xmlHttp.open( "POST", "https://oauthalexa.herokuapp.com/api/deleteSpeakerByNumSerie", true ); // false for synchronous request
+                         xmlHttp.open( "POST", "https://oauth20.herokuapp.com/api/deleteSpeakerByNumSerie", true ); // false for synchronous request
                          xmlHttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded"); // false for synchronous request
                          xmlHttp.onreadystatechange = function() {//Call a function when the state changes.
                             if(xmlHttp.readyState == XMLHttpRequest.DONE && xmlHttp.status == 200) {
