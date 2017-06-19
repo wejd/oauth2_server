@@ -62,14 +62,17 @@ router.get('/initdb', function(req, res, next) {
     lunchDatabaseCreationForce();
     res.send({ status: 'ok' })
 })
+
 router.get('/login', function(req, res, next) {
 
     res.render('login')
 })
+
 router.get('/error', function(req, res, next) {
 
     res.render('error')
 })
+
 router.get('/managespeaker', function(req, res, next) {
     req.user = req.session.passport.user
     if (!req.user) {
@@ -79,6 +82,7 @@ router.get('/managespeaker', function(req, res, next) {
     }
 
 })
+
 router.post('/addNewUser', function(req, res, next) {
 
     var user = {
@@ -94,7 +98,6 @@ router.post('/addNewUser', function(req, res, next) {
 
 
 })
-
 
 router.post('/userlogin', function(req, res, next) {
     console.log('grzerg')
@@ -112,6 +115,7 @@ router.post('/userlogin', function(req, res, next) {
     })
 
 })
+
 router.get('/getspeakers', function(req, res, next) {
 
     req.user = req.session.passport.user
@@ -122,6 +126,7 @@ router.get('/getspeakers', function(req, res, next) {
     })
 
 })
+
 router.post('/addspeakers', function(req, res, next) {
 
     req.user = req.session.passport.user
@@ -138,6 +143,7 @@ router.post('/addspeakers', function(req, res, next) {
     })
 
 })
+
 router.post('/login', function(req, res, next) {
     models.user.findOne({ where: { username: req.body.username } }).then(function(user) {
 
@@ -187,6 +193,7 @@ router.post('/deleteSpeakerByNumSerie', function(req, res, next) {
 
 })
 var http = require('bluebird').promisifyAll(require('request'), { multiArgs: true });
+
 router.get('/linkspeaker', authController.isAuthenticated, function(req, res, next) {
     var namespeakerfromalexa = req.body.key
 
@@ -292,7 +299,6 @@ router.get('/linkToanyone', authController.isAuthenticated, function(req, res, n
     })
 })
 
-
 router.get('/playtrack', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
@@ -375,6 +381,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
 
 
 })
+
 router.get('/pause', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
@@ -482,6 +489,7 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
 
 
 })
+
 router.get('/incrvolume', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
@@ -536,6 +544,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
 
 
 })
+
 router.get('/decrevolume', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
@@ -592,6 +601,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
 
 
 })
+
 router.get('/increasevolume', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
@@ -645,6 +655,7 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
 
 
 })
+
 router.get('/decreasevolume', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
@@ -699,9 +710,6 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
 
 })
 
-
-
-
 router.post('/speakers', authController.isAuthenticated, function(req, res, next) {
 
 
@@ -717,15 +725,20 @@ router.post('/speakers', authController.isAuthenticated, function(req, res, next
     })
 
 })
+
 router.get('/speakers', authController.isAuthenticated, function(req, res, next) {
 
 
     speakerController.findSpeakerByOwner(req.user.id, function(result) {
-
+        console.log(result)
         res.send(result)
     })
 
 })
+
+
+
+
 router.get('/speakersb', authController.isBearerAuthenticated, function(req, res, next) {
 
     speakerController.getAllspeaker(function(result) {
@@ -736,10 +749,10 @@ router.get('/speakersb', authController.isBearerAuthenticated, function(req, res
 })
 
 router.get('/oauth2/authorize', authController.isAuthenticated, oauth2Controller.authorization)
+
 router.post('/oauth2/authorize', authController.isAuthenticated, oauth2Controller.decision)
 
 router.post('/oauth2/token', authController.isClientAuthenticated, oauth2Controller.token)
-
 
 router.get('/privacy', function(req, res, next) {
 
