@@ -742,7 +742,7 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
                     if (body) {
 
                         console.log('bdy ' + body)
-                        console.log('bdy ' + result[j])
+                        console.log('bdy ' + result[j].name)
                         body.name = result[j].name
                         tab.push(body)
 
