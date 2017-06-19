@@ -730,7 +730,7 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
 
 
     speakerController.findSpeakerByOwner(req.user.id, function(result) {
-        console.log(result)
+
         var tab = []
         j = 0
         for (i = 0; i < result.length; i++) {
@@ -741,7 +741,7 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
 
                     if (body) {
 
-
+                        console.log('bdy ' + body)
                         tab.push[body]
 
 
