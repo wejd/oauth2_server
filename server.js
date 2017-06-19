@@ -742,7 +742,7 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
                     if (body) {
 
                         console.log('bdy ' + body)
-                        tab.push[body]
+                        tab.push(body)
 
 
                     }
