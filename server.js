@@ -752,6 +752,7 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
             j++
         }
         if (j == result.length) {
+            console.log(tab + ' this is the tab')
             res.send(tab)
         }
 
