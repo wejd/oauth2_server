@@ -731,7 +731,30 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
 
     speakerController.findSpeakerByOwner(req.user.id, function(result) {
         console.log(result)
-        res.send(result)
+        var tab = []
+        j = 0
+        for (i = 0; i < result.length; i++) {
+            http.postAsync({ url: 'http://vps341573.ovh.net:5151/getsocketByNumSerie', json: true, form: { key: result[i].num_serie } }).spread(
+
+                function(error, body) {
+
+
+                    if (body) {
+
+
+                        tab.push[body]
+
+
+                    }
+
+
+                });
+            j++
+        }
+        if (j == result.length) {
+            res.send(tab)
+        }
+
     })
 
 })
