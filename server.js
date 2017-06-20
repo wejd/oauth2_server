@@ -303,6 +303,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
     i = 0;
     j = 0
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        console.log('speake rliskt ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
             if (speaker.selected == true) {
