@@ -203,7 +203,7 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
             if (speaker.name == namespeakerfromalexa) {
 
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
 
@@ -233,7 +233,7 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
             } else {
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/unlinkspeaker', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/unlinkspeaker', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
 
@@ -263,7 +263,7 @@ router.get('/linkToanyone', authController.isAuthenticated, function(req, res, n
 
 
 
-        http.postAsync({ url: 'http://vps341573.ovh.net:5050/', json: true, form: { key: listSpeaker[0].num_serie } }).spread(
+        http.postAsync({ url: 'http://vps341573.ovh.net:5151/', json: true, form: { key: listSpeaker[0].num_serie } }).spread(
 
             function(error, body) {
 
@@ -307,7 +307,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
 
             if (speaker.linked == true) {
                 j++;
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/playtrack', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/playtrack', json: true, form: { key: speaker.num_serie } }).spread(
                     function(error, body) {
                         if (body == 'no') {
                             res.send({ result: 'not found' })
@@ -337,7 +337,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
             if (speaker.linked == true) {
                 j++;
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/playnext', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/playnext', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
 
@@ -391,7 +391,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
             if (speaker.linked == true) {
 
                 j++;
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/pause', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/pause', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
 
@@ -445,7 +445,7 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
             if (speaker.linked == true) {
                 j++;
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/playprevious', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/playprevious', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
 
@@ -500,7 +500,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
             if (speaker.linked == true) {
                 j++;
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/incrvolume', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/incrvolume', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
 
@@ -556,7 +556,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
             if (speaker.linked == true) {
                 j++;
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/decrevolume', json: true, form: { key: speaker.num_serie } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/decrevolume', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
 
@@ -611,7 +611,7 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
             if (speaker.linked == true) {
                 j++;
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/increasevolume', json: true, form: { key: speaker.num_serie, nb: req.body.key } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/increasevolume', json: true, form: { key: speaker.num_serie, nb: req.body.key } }).spread(
 
                     function(error, body) {
 
@@ -665,7 +665,7 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
             if (speaker.linked == true) {
                 j++;
 
-                http.postAsync({ url: 'http://vps341573.ovh.net:5050/decreasevolume', json: true, form: { key: speaker.num_serie, nb: req.body.key } }).spread(
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/decreasevolume', json: true, form: { key: speaker.num_serie, nb: req.body.key } }).spread(
 
                     function(error, body) {
 
