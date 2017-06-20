@@ -306,7 +306,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
         console.log('speake rliskt ', listSpeaker)
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true || speaker.linked == true) {
                 j++;
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/playtrack', json: true, form: { key: speaker.num_serie } }).spread(
                     function(error, body) {
@@ -335,7 +335,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true) {
                 j++;
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/playnext', json: true, form: { key: speaker.num_serie } }).spread(
@@ -389,7 +389,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true) {
 
                 j++;
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/pause', json: true, form: { key: speaker.num_serie } }).spread(
@@ -443,7 +443,7 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true) {
                 j++;
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/playprevious', json: true, form: { key: speaker.num_serie } }).spread(
@@ -498,7 +498,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
 
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true) {
                 j++;
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/incrvolume', json: true, form: { key: speaker.num_serie } }).spread(
@@ -554,7 +554,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
 
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true) {
                 j++;
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/decrevolume', json: true, form: { key: speaker.num_serie } }).spread(
@@ -609,7 +609,7 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true) {
                 j++;
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/increasevolume', json: true, form: { key: speaker.num_serie, nb: req.body.key } }).spread(
@@ -663,7 +663,7 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         listSpeaker.forEach(function(speaker) {
 
-            if (speaker.selected == true) {
+            if (speaker.selected == true || speaker.linked == true) {
                 j++;
 
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/decreasevolume', json: true, form: { key: speaker.num_serie, nb: req.body.key } }).spread(
