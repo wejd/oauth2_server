@@ -734,7 +734,7 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
         var tab = []
         j = 0
         for (i = 0; i < result.length; i++) {
-            http.postAsync({ url: 'http://vps341573.ovh.net:5151/getsocketByNumSerie', json: true, form: { key: result[i].num_serie } }).spread(
+            http.postAsync({ url: 'http://vps341573.ovh.net:5151/getsocketByNumSerie', json: true, form: { key: result[i].num_serie, name: result[i].name } }).spread(
 
                 function(error, body) {
 
