@@ -492,6 +492,53 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
 
 })
 
+router.get('/whatisplaying', authController.isAuthenticated, function(req, res, next) {
+    i = 0;
+    j = 0
+    speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
+        listSpeaker.forEach(function(speaker) {
+
+            if (speaker.selected == true || speaker.linked == true) {
+                j++;
+
+                http.postAsync({ url: 'http://vps341573.ovh.net:5151/whatisplaying', json: true, form: { key: speaker.num_serie } }).spread(
+
+                    function(error, body) {
+
+
+
+
+
+                        res.send(body)
+
+
+
+
+
+                    });
+
+
+
+
+
+            }
+            if (i == listSpeaker.length - 1) {
+                if (j == 0) {
+                    res.send({ result: 'not found' })
+                }
+            }
+            i++;
+
+
+        })
+
+
+    })
+
+
+
+})
+
 router.get('/incrvolume', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
@@ -767,7 +814,6 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
     })
 
 })
-
 
 
 
