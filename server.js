@@ -169,11 +169,12 @@ router.post('/login', function(req, res, next) {
 
 router.post('/updateSpeakerByNumSerie', function(req, res, next) {
 
-    speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {
+    speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {s
         if (speakerupdated) {
             res.send(true);
         } else {
             res.send(false)
+
         }
 
     })
@@ -505,8 +506,7 @@ router.get('/whatisplaying', authController.isAuthenticated, function(req, res, 
 
                     function(error, body) {
 
-                        console.log('+++++++++++++++++++++++++++++' + body)
-                        console.log('+++++++++++++++++++++++++++++ ' + JSON.stringify(error, null, 4))
+
 
 
 
