@@ -506,7 +506,7 @@ router.get('/whatisplaying', authController.isAuthenticated, function(req, res, 
                     function(error, body) {
 
                         console.log('+++++++++++++++++++++++++++++' + body)
-                        console.log('+++++++++++++++++++++++++++++ %j' + error)
+                        console.log('+++++++++++++++++++++++++++++ ' + JSON.stringify(error, null, 4))
 
 
 
