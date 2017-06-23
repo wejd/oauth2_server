@@ -509,7 +509,7 @@ router.get('/whatisplaying', authController.isAuthenticated, function(req, res, 
 
 
 
-                        res.send(body)
+                        res.send({ result: body })
 
 
 
