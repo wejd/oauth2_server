@@ -172,8 +172,10 @@ router.post('/updateSpeakerByNumSerie', function(req, res, next) {
     speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {
         if (speakerupdated) {
             res.send(true);
+            res.end()
         } else {
             res.send(false)
+            res.end()
 
         }
 
@@ -186,8 +188,10 @@ router.post('/deleteSpeakerByNumSerie', function(req, res, next) {
     speakerController.deletespeakerByNumSerie(req.body.num_serie, function(speakerdeleted) {
         if (speakerdeleted) {
             res.send(true);
+            res.end()
         } else {
             res.send(false)
+            res.end()
         }
 
     })
@@ -214,7 +218,7 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
 
                             res.send({ result: 'found' })
-
+                            res.end()
 
                         } else {
 
@@ -222,7 +226,7 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
                             res.send({ result: 'not found' })
 
-
+                            res.end()
                         }
 
 
@@ -274,14 +278,14 @@ router.get('/linkToanyone', authController.isAuthenticated, function(req, res, n
 
 
                     res.send({ result: 'found', name: listSpeaker[0].name })
-
+                    res.end()
 
                 } else {
 
 
 
                     res.send({ result: 'not found', name: listSpeaker[0].name })
-
+                    res.end()
 
                 }
 
@@ -314,9 +318,11 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
                     function(error, body) {
                         if (body.status == 'no') {
                             res.send({ result: 'not found' })
+                            res.end()
                         } else {
 
                             res.send({ result: 'found' })
+                            res.end()
                         }
                     });
             }
@@ -324,6 +330,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
             i++;
@@ -404,7 +411,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
 
 
                             res.send({ result: 'not found' })
-
+                            res.end()
 
                         } else {
 
@@ -412,7 +419,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
 
                             res.send({ result: 'found' })
 
-
+                            res.end()
                         }
 
 
@@ -426,6 +433,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
 
@@ -458,14 +466,14 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
 
 
                             res.send({ result: 'not found' })
-
+                            res.end()
 
                         } else {
 
 
 
                             res.send({ result: 'found' })
-
+                            res.end()
 
                         }
 
@@ -480,6 +488,7 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
             i++;
@@ -513,7 +522,7 @@ router.get('/whatisplaying', authController.isAuthenticated, function(req, res, 
 
 
                         res.send({ result: body })
-
+                        res.end()
 
 
 
@@ -528,6 +537,7 @@ router.get('/whatisplaying', authController.isAuthenticated, function(req, res, 
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
             i++;
@@ -561,6 +571,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
 
 
                             res.send({ result: 'not found' })
+                            res.end()
 
 
                         } else {
@@ -568,6 +579,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
 
 
                             res.send({ result: 'found' })
+                            res.end()
 
 
                         }
@@ -583,6 +595,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
 
@@ -617,7 +630,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
 
 
                             res.send({ result: 'not found' })
-
+                            res.end()
 
                         } else {
 
@@ -625,7 +638,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
 
                             res.send({ result: 'found' })
 
-
+                            res.end()
                         }
 
 
@@ -639,6 +652,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
 
@@ -672,14 +686,14 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
 
 
                             res.send({ result: 'not found' })
-
+                            res.end()
 
                         } else {
 
 
 
                             res.send({ result: 'found' })
-
+                            res.end()
 
                         }
 
@@ -694,6 +708,7 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
 
@@ -726,14 +741,14 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
 
 
                             res.send({ result: 'not found' })
-
+                            res.end()
 
                         } else {
 
 
 
                             res.send({ result: 'found' })
-
+                            res.end()
 
                         }
 
@@ -748,6 +763,7 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
             i++;
@@ -844,4 +860,5 @@ router.get('/privacy', function(req, res, next) {
 app.use('/api', router);
 
 // Start the server
+app.listen(process.env.PORT || 3000)
 app.listen(process.env.PORT || 3000)
