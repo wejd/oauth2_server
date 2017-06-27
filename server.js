@@ -169,7 +169,7 @@ router.post('/login', function(req, res, next) {
 
 router.post('/updateSpeakerByNumSerie', function(req, res, next) {
 
-    speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {s
+    speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {
         if (speakerupdated) {
             res.send(true);
         } else {
