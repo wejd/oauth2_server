@@ -343,7 +343,10 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/playnext', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
-
+                        if (error) {
+                            console.log(error)
+                            res.send({ result: 'not found' })
+                        }
 
                         if (body == 'no') {
 
