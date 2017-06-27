@@ -349,14 +349,14 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
 
 
                             res.send({ result: 'not found' })
-
+                            res.end()
 
                         } else {
 
 
 
                             res.send({ result: 'found' })
-
+                            res.end()
 
                         }
 
@@ -371,6 +371,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
             if (i == listSpeaker.length - 1) {
                 if (j == 0) {
                     res.send({ result: 'not found' })
+                    res.end()
                 }
             }
 
