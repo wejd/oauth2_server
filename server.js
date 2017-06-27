@@ -210,7 +210,7 @@ router.get('/linkspeaker', authController.isAuthenticated, function(req, res, ne
 
 
 
-                        if (body.status == 'found') {
+                        if (body == 'found') {
 
 
                             res.send({ result: 'found' })
@@ -270,7 +270,7 @@ router.get('/linkToanyone', authController.isAuthenticated, function(req, res, n
 
 
 
-                if (body.status == 'found') {
+                if (body == 'found') {
 
 
                     res.send({ result: 'found', name: listSpeaker[0].name })
