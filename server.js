@@ -182,7 +182,7 @@ router.post('/updateSpeakerByNumSerie', function(req, res, next) {
 })
 
 router.post('/deleteSpeakerByNumSerie', function(req, res, next) {
-    console.log(req)
+
     speakerController.deletespeakerByNumSerie(req.body.num_serie, function(speakerdeleted) {
         if (speakerdeleted) {
             res.send(true);
@@ -343,10 +343,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/playnext', json: true, form: { key: speaker.num_serie } }).spread(
 
                     function(error, body) {
-                        if (error) {
-                            console.log(error)
-                            res.send({ result: 'not found' })
-                        }
+
 
                         if (body == 'no') {
 
