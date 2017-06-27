@@ -860,5 +860,4 @@ router.get('/privacy', function(req, res, next) {
 app.use('/api', router);
 
 // Start the server
-app.listen(process.env.PORT || 3000)
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 3216)
