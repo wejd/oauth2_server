@@ -341,7 +341,8 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
 router.get('/playnext', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
-    console.log(req.user)
+    console.log(req.user.dataValues)
+    console.log(req.user.name)
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         listSpeaker.forEach(function(speaker) {
 
