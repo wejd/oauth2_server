@@ -317,7 +317,7 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
                 http.postAsync({ url: 'http://vps341573.ovh.net:5151/playtrack', json: true, form: { key: speaker.num_serie } }).spread(
                     function(error, body) {
                         if (body.status == 'no') {
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
                         } else {
 
@@ -355,7 +355,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
                         if (body.status == 'no') {
 
                             console.log('from here the response will be sent')
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
 
                         } else {
@@ -410,7 +410,7 @@ router.get('/pause', authController.isAuthenticated, function(req, res, next) {
                         if (body.status == 'no') {
 
 
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
 
                         } else {
@@ -465,7 +465,7 @@ router.get('/playprevious', authController.isAuthenticated, function(req, res, n
                         if (body.status == 'no') {
 
 
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
 
                         } else {
@@ -570,7 +570,7 @@ router.get('/incrvolume', authController.isAuthenticated, function(req, res, nex
                         if (body.status == 'no') {
 
 
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
 
 
@@ -629,7 +629,7 @@ router.get('/decrevolume', authController.isAuthenticated, function(req, res, ne
                         if (body.status == 'no') {
 
 
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
 
                         } else {
@@ -685,7 +685,7 @@ router.get('/increasevolume', authController.isAuthenticated, function(req, res,
                         if (body.status == 'no') {
 
 
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
 
                         } else {
@@ -740,7 +740,7 @@ router.get('/decreasevolume', authController.isAuthenticated, function(req, res,
                         if (body.status == 'no') {
 
 
-                            res.send({ result: 'not found', name: speaker.name })
+                            res.send({ result: 'not found' })
                             res.end()
 
                         } else {
