@@ -341,8 +341,8 @@ router.get('/playtrack', authController.isAuthenticated, function(req, res, next
 router.get('/playnext', authController.isAuthenticated, function(req, res, next) {
     i = 0;
     j = 0
-    console.log(req.user.dataValues)
-    console.log(req.user.name)
+    console.log(req.user.dataValues.username)
+
     speakerController.findSpeakerByOwner(req.user.id, function(listSpeaker) {
         listSpeaker.forEach(function(speaker) {
 
@@ -836,6 +836,16 @@ router.get('/speakers', authController.isAuthenticated, function(req, res, next)
 
 })
 
+
+router.get('/getusernamelinked', authController.isAuthenticated, function(req, res, next) {
+
+    console.log(req.user.dataValues.username)
+    res.send(req.user.dataValues.username)
+
+
+
+
+})
 
 
 router.get('/speakersb', authController.isBearerAuthenticated, function(req, res, next) {
