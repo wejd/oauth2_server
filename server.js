@@ -166,7 +166,13 @@ router.post('/login', function(req, res, next) {
 
 
 })
+router.post('/getSpeakerByNumSerie', function(req, res, next) {
+    speakerController.getSpeakerByNumSerie(req.body.num_serie, function(speaker) {
 
+        res.send(speaker)
+    })
+
+})
 router.post('/updateSpeakerByNumSerie', function(req, res, next) {
 
     speakerController.updatespeakerByNumSerie(req.body.num_serie, req.body.linked, function(speakerupdated) {
