@@ -354,7 +354,7 @@ router.get('/playnext', authController.isAuthenticated, function(req, res, next)
 
                         if (body.status == 'no') {
 
-
+                            console.log('from here the response will be sent')
                             res.send({ result: 'not found', name: speaker.name })
                             res.end()
 
